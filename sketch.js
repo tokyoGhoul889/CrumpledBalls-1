@@ -5,8 +5,14 @@ const Body = Matter.Body;
 
 var engine, world;
 
+function preload(){
+  dustbinImg = loadImage("dustbin.png");
+  paperImg = loadImage("paper.png")
+}
+
 function setup() {
 	createCanvas(800, 700);
+
 
 
 	engine = Engine.create();
@@ -15,11 +21,15 @@ function setup() {
 	//Create the Bodies Here.
 	paper = new Paper(100, 600, 10);
 
+  
+
+
   ground = new Ground(400, 680, 800, 20);
   
-  leftSide = new Dustbin(550, 620, 20, 100);
+  left = new Dustbin(550, 620, 20, 100);
   bottom = new Dustbin(610, 660, 100, 20);
-  rightSide = new Dustbin(670, 620, 20, 100);
+  right = new Dustbin(670, 620, 20, 100);
+
 
 	Engine.run(engine);
   
@@ -29,7 +39,7 @@ function setup() {
 function draw() {
   rectMode(CENTER);
 
-  background(0);
+  background("black");
   
   Engine.update(engine);
 
@@ -37,9 +47,9 @@ function draw() {
 
   ground.display();
 
-  leftSide.display();
+  left.display();
   bottom.display();
-  rightSide.display();
+  right.display();
 
   drawSprites();
  
